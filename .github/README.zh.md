@@ -24,6 +24,14 @@
   <img src="https://img.shields.io/badge/Platform-macOS-999?style=flat-square&logo=apple&logoColor=white" alt="macOS">
 </p>
 
+<p align="center">
+  <a href="https://youtu.be/PxPKkh4E9-Y">
+    <img src="https://img.youtube.com/vi/PxPKkh4E9-Y/maxresdefault.jpg" alt="OpenBuddy 演示视频" width="640">
+  </a>
+  <br>
+  <em>▶ <a href="https://youtu.be/PxPKkh4E9-Y">在 YouTube 上观看演示视频</a></em>
+</p>
+
 ---
 
 ## OpenBuddy 是什么？
