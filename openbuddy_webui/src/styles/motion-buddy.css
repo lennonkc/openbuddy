@@ -1,0 +1,16 @@
+.motion-buddy {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 1280px) {
+  .motion-buddy { width: 2.75rem; height: 2.75rem; }
+}
+
+.motion-buddy svg { width: 88%; height: 88%; }

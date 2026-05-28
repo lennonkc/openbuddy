@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.venv/
+.ruff_cache/
+
+# Node/npm
+node_modules/
+dist/
+build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.idea/
+.vscode/
+.cache/
+*.code-workspace
+
+# Claude / agent local state
+.claude/
+.superpowers/
+.agents/
+
+# Local logs / scratch
+/tmp/
+*.log
+sandbox/
+
+# Local tooling
+.gitnexus/
+.gitnexusignore

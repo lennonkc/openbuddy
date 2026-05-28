@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>openbuddy.fun — A Funny and Easy AI</title>
+  <meta name="description" content="A pocket AI companion powered by ESP32. Voice-first interaction, creative rooms, and agent power in a tiny device.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="openbuddy.fun — A Funny and Easy AI">
+  <meta property="og:description" content="A pocket AI companion powered by ESP32. Voice-first interaction, creative rooms, and agent power in a tiny device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://openbuddy.fun">
+  <meta property="og:image" content="https://openbuddy.fun/public/stopwatch_font.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Iconify (for Fluent Emoji Flat icons) -->
+  <script defer src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Fixed Navigation -->
+  <nav class="nav">
+    <a class="nav__logo" href="#">open<span>buddy</span>.fun</a>
+    <a class="nav__github" href="https://github.com/lennonkc/openbuddy" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub
+    </a>
+  </nav>
+
+  <!-- Progress Bar -->
+  <div class="progress"><div class="progress__fill"></div></div>
+
+  <!-- Horizontal Scroll Container -->
+  <div class="h-wrapper">
+    <div class="h-track">
+
+      <!-- ===== Panel 1: Hero ===== -->
+      <section class="panel panel--hero">
+        <div class="panel__inner panel__inner--split">
+          <div class="hero__text">
+            <h1 class="hero__title" data-animate="chars">openbuddy<span class="hero__dot">.fun</span></h1>
+            <p class="hero__tagline" data-animate="words">A funny and easy AI</p>
+            <p class="hero__desc" data-animate="fade">Bring the most powerful tools to the most curious minds</p>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__device" data-animate="float">
+              <img src="public/stopwatch_font.png" alt="OpenBuddy StopWatch device">
+            </div>
+            <div class="hero__glow"></div>
+          </div>
+        </div>
+        <div class="hero__scroll-hint" data-animate="fade">
+          <span>Scroll to explore</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="deco deco--circle" style="--size:300px;--color:var(--primary-light);top:-80px;right:-80px;"></div>
+        <div class="deco deco--circle" style="--size:200px;--color:var(--secondary-light);bottom:10%;left:-60px;"></div>
+        <span class="panel__num">01</span>
+      </section>
+
+      <!-- ===== Panel 2: Problem ===== -->
+      <section class="panel panel--problem">
+        <div class="panel__inner">
+          <p class="panel__label" data-animate="fade">[ The Problem ]</p>
+          <h2 class="panel__heading" data-animate="words">The terminal. The file system. The file type.</h2>
+          <p class="panel__sub" data-animate="fade">Too complicated for kids. Too complicated for anyone who just wants to create.</p>
+          <div class="problem__items">
+            <div class="problem__item" data-animate="slide">
+              <div class="problem__photo problem__photo--1">
+                <img src="public/terminal_image.png" alt="Terminal commands" loading="lazy" draggable="false">
+              </div>
+              <div class="problem__label">
+                <span class="problem__text">Terminal</span>
+                <span class="problem__strike"></span>
+              </div>
+            </div>
+            <div class="problem__item" data-animate="slide">
+              <div class="problem__photo problem__photo--2">
+                <img src="public/filesystem_image.png" alt="File system paths" loading="lazy" draggable="false">
+              </div>
+              <div class="problem__label">
+                <span class="problem__text">File Tree</span>
+                <span class="problem__strike"></span>
+              </div>
+            </div>
+            <div class="problem__item" data-animate="slide">
+              <div class="problem__photo problem__photo--3">
+                <img src="public/filetype_image.png" alt="Document types" loading="lazy" draggable="false">
+              </div>
+              <div class="problem__label">
+                <span class="problem__text">File Types</span>
+                <span class="problem__strike"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="deco deco--circle" style="--size:250px;--color:rgba(231,76,60,0.08);top:20%;right:-80px;"></div>
+        <span class="panel__num">02</span>
+      </section>
+
+      <!-- ===== Panel 3: Solution ===== -->
+      <section class="panel panel--solution">
+        <div class="panel__inner">
+          <p class="panel__label" data-animate="fade">[ The Answer ]</p>
+          <h2 class="panel__heading" data-animate="words">Just press. Just speak. Just create.</h2>
+          <div class="solution__cards">
+            <div class="solution__card" data-animate="card">
+              <div class="solution__icon"><iconify-icon icon="fluent-emoji-flat:studio-microphone" width="1em" height="1em"></iconify-icon></div>
+              <h3 class="solution__title">Voice First</h3>
+              <p class="solution__desc">No typing needed. Press the button, speak your mind.</p>
+            </div>
+            <div class="solution__card" data-animate="card">
+              <div class="solution__icon"><iconify-icon icon="fluent-emoji-flat:house" width="1em" height="1em"></iconify-icon></div>
+              <h3 class="solution__title">Room</h3>
+              <p class="solution__desc">Files become simple items. Just click to see. PNG, PDF, Markdown — all previewed instantly.</p>
+            </div>
+            <div class="solution__card" data-animate="card">
+              <div class="solution__icon"><iconify-icon icon="fluent-emoji-flat:robot" width="1em" height="1em"></iconify-icon></div>
+              <h3 class="solution__title">Agent Power</h3>
+              <p class="solution__desc">Built with Claude Agent SDK. The full power of code agents, zero complexity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="deco deco--circle" style="--size:280px;--color:var(--primary-light);bottom:-100px;left:10%;"></div>
+        <span class="panel__num">03</span>
+      </section>
+
+      <!-- ===== Panel 4: Showcase ===== -->
+      <section class="panel panel--showcase">
+        <div class="panel__inner">
+          <p class="panel__label" data-animate="fade">[ Hardware ]</p>
+          <h2 class="panel__heading" data-animate="words">Pick your buddy</h2>
+          <p class="panel__sub" data-animate="fade">Four colors. Same magic inside.</p>
+          <div class="showcase__gallery">
+            <div class="showcase__item" data-parallax="-30">
+              <img class="showcase__device" src="public/stopwatch_font.png" alt="Teal">
+              <span class="showcase__color" style="--dot:var(--primary)">Teal</span>
+            </div>
+            <div class="showcase__item" data-parallax="20">
+              <img class="showcase__device" src="public/stopwatch_pink_font.png" alt="Pink">
+              <span class="showcase__color" style="--dot:var(--pink)">Pink</span>
+            </div>
+            <div class="showcase__item" data-parallax="-15">
+              <img class="showcase__device" src="public/stopwatch_purple_flatput.png" alt="Purple">
+              <span class="showcase__color" style="--dot:var(--purple)">Purple</span>
+            </div>
+            <div class="showcase__item" data-parallax="25">
+              <img class="showcase__device" src="public/stopwatch_yellow_leftfont.png" alt="Yellow">
+              <span class="showcase__color" style="--dot:var(--secondary)">Yellow</span>
+            </div>
+          </div>
+        </div>
+        <div class="deco deco--circle" style="--size:200px;--color:var(--pink-light);top:-60px;left:30%;"></div>
+        <div class="deco deco--circle" style="--size:160px;--color:var(--purple-light);bottom:10%;right:5%;"></div>
+        <span class="panel__num">04</span>
+      </section>
+
+      <!-- ===== Panel 5: Screenshots ===== -->
+      <section class="panel panel--screens">
+        <div class="panel__inner">
+          <p class="panel__label" data-animate="fade">[ WebUI ]</p>
+          <h2 class="panel__heading" data-animate="words">See the magic</h2>
+          <div class="screens__grid">
+            <div class="screens__item" data-parallax="-20">
+              <div class="screens__frame">
+                <div class="screens__placeholder">
+                  <span>Chat</span>
+                  <small>Talk with your buddy</small>
+                </div>
+              </div>
+            </div>
+            <div class="screens__item" data-parallax="15">
+              <div class="screens__frame">
+                <div class="screens__placeholder">
+                  <span>Room</span>
+                  <small>Your creative space</small>
+                </div>
+              </div>
+            </div>
+            <div class="screens__item" data-parallax="-10">
+              <div class="screens__frame">
+                <div class="screens__placeholder">
+                  <span>Buddy</span>
+                  <small>Your desktop pet</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="deco deco--circle" style="--size:220px;--color:var(--secondary-light);top:15%;right:-80px;"></div>
+        <span class="panel__num">05</span>
+      </section>
+
+      <!-- ===== Panel 6: Video ===== -->
+      <section class="panel panel--video">
+        <div class="panel__inner panel__inner--center">
+          <p class="panel__label" data-animate="fade">[ Demo ]</p>
+          <h2 class="panel__heading" data-animate="words">See it in action</h2>
+          <p class="panel__sub" data-animate="fade">One minute. That's all it takes to get it.</p>
+          <div class="video__wrapper" data-animate="scale">
+            <button class="video__play" id="videoPlay" aria-label="Play demo video">
+              <div class="video__play-icon"></div>
+            </button>
+          </div>
+        </div>
+        <span class="panel__num">06</span>
+      </section>
+
+      <!-- ===== Panel 7: CTA ===== -->
+      <section class="panel panel--cta">
+        <div class="panel__inner panel__inner--center">
+          <h2 class="panel__heading panel__heading--large" data-animate="words">Bring the most powerful tools to the most curious minds</h2>
+          <div class="cta__links">
+            <a class="cta__link" href="https://github.com/lennonkc/openbuddy" target="_blank" rel="noopener noreferrer" data-animate="card">
+              <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              GitHub
+            </a>
+            <a class="cta__link" href="https://kickstarter.com" target="_blank" rel="noopener noreferrer" data-animate="card">
+              <svg viewBox="0 0 24 24"><path d="M18.204 14.944L13.832 9.876l3.9-5.1a1.5 1.5 0 00-.3-2.1 1.5 1.5 0 00-2.1.3l-3.636 4.752V2.4a1.5 1.5 0 00-3 0v19.2a1.5 1.5 0 003 0v-5.928l4.08 5.232a1.5 1.5 0 002.1.252 1.5 1.5 0 00.328-2.212z"/></svg>
+              Kickstarter
+            </a>
+            <a class="cta__link" href="https://hackster.io" target="_blank" rel="noopener noreferrer" data-animate="card">
+              <svg viewBox="0 0 24 24"><path d="M19.5 3h-15A1.5 1.5 0 003 4.5v15A1.5 1.5 0 004.5 21h15a1.5 1.5 0 001.5-1.5v-15A1.5 1.5 0 0019.5 3zM12 17.25a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3-4.5H9a.75.75 0 010-1.5h6a.75.75 0 010 1.5zm0-3H9a.75.75 0 010-1.5h6a.75.75 0 010 1.5z"/></svg>
+              Hackster
+            </a>
+            <a class="cta__link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" data-animate="card">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+          <footer class="footer">
+            <p>&copy; 2026 OpenBuddy. Built with <a href="https://github.com/anthropics/claude-agent-sdk-python" target="_blank" rel="noopener noreferrer">Claude Agent SDK</a>.</p>
+            <p>Independent project, not affiliated with Anthropic.</p>
+          </footer>
+        </div>
+        <span class="panel__num">07</span>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

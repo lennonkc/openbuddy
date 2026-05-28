@@ -1,0 +1,269 @@
+/* ============================================
+   Pet part-level animations per agent state
+   ============================================ */
+
+/* --- SVG transform setup --- */
+.pet-eye-l, .pet-eye-r,
+.gear-top, .gear-left, .gear-right,
+.gear-jewel, .gear-flame, .gear-cog, .gear-needle,
+.gear-tassel, .gear-pages {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.gear-top { transform-origin: center bottom; }
+.gear-left { transform-origin: right center; }
+.gear-right { transform-origin: left center; }
+.gear-flame { transform-origin: center bottom; }
+
+/* ====================== IDLE ====================== */
+
+.pet-idle .pet-eye-l { animation: eye-blink 5s ease-in-out infinite; }
+.pet-idle .pet-eye-r { animation: eye-blink 5s ease-in-out 0.15s infinite; }
+.pet-idle .gear-top   { animation: idle-float 3s ease-in-out infinite; }
+.pet-idle .gear-left  { animation: idle-rock 3.5s ease-in-out infinite; }
+.pet-idle .gear-right { animation: idle-bob 4s ease-in-out infinite; }
+
+/* idle accents */
+.pet-idle .gear-jewel  { animation: sparkle 2s ease-in-out infinite; }
+.pet-idle .gear-flame  { animation: flicker 0.8s ease-in-out infinite; }
+.pet-idle .gear-cog    { animation: spin-slow 8s linear infinite; }
+.pet-idle .gear-needle { animation: needle-drift 4s ease-in-out infinite; }
+.pet-idle .gear-tassel { animation: tassel-swing 2.5s ease-in-out infinite; }
+.pet-idle .gear-pages  { animation: page-rustle 3s ease-in-out infinite; }
+
+/* ====================== LISTENING ====================== */
+
+.pet-listening .pet-eye-l,
+.pet-listening .pet-eye-r { animation: eye-listen 2s ease-in-out infinite; }
+.pet-listening .gear-top   { animation: listen-perk 2s ease-in-out infinite; }
+.pet-listening .gear-left  { animation: listen-lean-l 2.5s ease-in-out infinite; }
+.pet-listening .gear-right { animation: listen-lean-r 2.5s ease-in-out infinite; }
+
+/* listening accents */
+.pet-listening .gear-jewel  { animation: sparkle 1.2s ease-in-out infinite; }
+.pet-listening .gear-flame  { animation: flame-grow 1.5s ease-in-out infinite; }
+.pet-listening .gear-cog    { animation: spin-slow 5s linear infinite; }
+.pet-listening .gear-needle { animation: needle-drift 2s ease-in-out infinite; }
+.pet-listening .gear-tassel { animation: tassel-swing 1.8s ease-in-out infinite; }
+.pet-listening .gear-pages  { animation: page-rustle 2s ease-in-out infinite; }
+
+/* ====================== THINKING ====================== */
+
+.pet-thinking .pet-eye-l { animation: eye-think 3s ease-in-out infinite; }
+.pet-thinking .pet-eye-r { animation: eye-think 3s ease-in-out 0.2s infinite; }
+.pet-thinking .gear-top   { animation: think-tilt 3s ease-in-out infinite; }
+.pet-thinking .gear-left  { animation: think-tap 1.2s ease-in-out infinite; }
+.pet-thinking .gear-right { animation: think-pulse 2s ease-in-out infinite; }
+
+/* thinking accents */
+.pet-thinking .gear-flame  { animation: flicker 0.5s ease-in-out infinite; }
+.pet-thinking .gear-cog    { animation: spin-slow 3s linear infinite; }
+.pet-thinking .gear-needle { animation: needle-drift 1.5s ease-in-out infinite; }
+.pet-thinking .gear-tassel { animation: tassel-swing 1.5s ease-in-out infinite; }
+.pet-thinking .gear-pages  { animation: page-rustle 1.5s ease-in-out infinite; }
+
+/* ====================== SPEAKING ====================== */
+
+.pet-speaking .pet-eye-l,
+.pet-speaking .pet-eye-r { animation: eye-speak 1.5s ease-in-out infinite; }
+.pet-speaking .gear-top   { animation: speak-nod 0.8s ease-in-out infinite; }
+.pet-speaking .gear-left  { animation: speak-wave 0.7s ease-in-out infinite; }
+.pet-speaking .gear-right { animation: speak-bounce 0.6s ease-in-out infinite; }
+
+/* speaking accents */
+.pet-speaking .gear-jewel  { animation: sparkle 0.6s ease-in-out infinite; }
+.pet-speaking .gear-flame  { animation: flame-blaze 0.4s ease-in-out infinite; }
+.pet-speaking .gear-cog    { animation: spin-slow 1.5s linear infinite; }
+.pet-speaking .gear-needle { animation: spin-slow 1s linear infinite; }
+.pet-speaking .gear-tassel { animation: tassel-swing 0.8s ease-in-out infinite; }
+.pet-speaking .gear-pages  { animation: page-rustle 0.8s ease-in-out infinite; }
+
+/* ====================== ERROR ====================== */
+
+.pet-error .pet-eye-l,
+.pet-error .pet-eye-r { animation: eye-error 0.4s linear 6; }
+.pet-error .gear-top   { animation: error-tilt 0.5s ease-out forwards; }
+.pet-error .gear-left  { animation: error-droop 0.6s ease-out forwards; }
+.pet-error .gear-right { animation: error-shake 0.3s linear 5; }
+
+/* error accents */
+.pet-error .gear-flame { animation: flame-die 0.8s ease-out forwards; }
+.pet-error .gear-jewel { animation: error-dim 0.5s ease-out forwards; }
+
+/* ====================== KEYFRAMES ====================== */
+
+/* --- Eyes --- */
+
+@keyframes eye-blink {
+  0%, 88%, 96%, 100% { transform: scaleY(1); }
+  92% { transform: scaleY(0.08); }
+}
+
+@keyframes eye-listen {
+  0%, 100% { fill: #FFB0C8; transform: scale(1.15); }
+  50% { fill: #FF8AB0; transform: scale(1.25); }
+}
+
+@keyframes eye-think {
+  0%, 100% { fill: #f59e0b; transform: scaleY(0.6) translateX(0); }
+  30% { fill: #f59e0b; transform: scaleY(0.6) translateX(-2px); }
+  70% { fill: #f59e0b; transform: scaleY(0.6) translateX(2px); }
+}
+
+@keyframes eye-speak {
+  0%, 100% { transform: scaleY(0.35) translateY(2px); }
+  50% { transform: scaleY(0.3) translateY(2.5px); }
+}
+
+@keyframes eye-error {
+  0%, 50%, 100% { fill: #ef4444; transform: scaleY(1); }
+  25%, 75% { fill: #ef4444; transform: scaleY(0.08); }
+}
+
+/* --- Idle parts --- */
+
+@keyframes idle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes idle-rock {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2.5deg); }
+  75% { transform: rotate(2.5deg); }
+}
+
+@keyframes idle-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1.5px) rotate(1deg); }
+}
+
+/* --- Listening parts --- */
+
+@keyframes listen-perk {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes listen-lean-l {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes listen-lean-r {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+/* --- Thinking parts --- */
+
+@keyframes think-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-4deg); }
+  70% { transform: rotate(4deg); }
+}
+
+@keyframes think-tap {
+  0%, 55%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(3px) rotate(1deg); }
+}
+
+@keyframes think-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* --- Speaking parts --- */
+
+@keyframes speak-nod {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(2px); }
+  65% { transform: translateY(1px); }
+}
+
+@keyframes speak-wave {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-7deg); }
+  70% { transform: rotate(7deg); }
+}
+
+@keyframes speak-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.05); }
+}
+
+/* --- Error parts --- */
+
+@keyframes error-tilt {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(-10deg) translateY(2px); }
+}
+
+@keyframes error-droop {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(12deg) translateY(4px); }
+}
+
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+}
+
+/* --- Skin-specific accents --- */
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; fill: #ffe88a; }
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) translateY(0); opacity: 1; }
+  25% { transform: scaleY(0.88) translateY(1px); opacity: 0.75; }
+  50% { transform: scaleY(1.06) translateY(-1px); opacity: 1; }
+  75% { transform: scaleY(0.94) translateY(0); opacity: 0.85; }
+}
+
+@keyframes flame-grow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) translateY(-2px); }
+}
+
+@keyframes flame-blaze {
+  0%, 100% { transform: scaleY(1.1) translateY(-1px); opacity: 1; }
+  30% { transform: scaleY(1.25) translateY(-3px); opacity: 0.9; }
+  60% { transform: scaleY(1.15) translateY(-1.5px); opacity: 1; }
+}
+
+@keyframes flame-die {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.4) translateY(5px); opacity: 0.2; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes needle-drift {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(12deg); }
+  75% { transform: rotate(-12deg); }
+}
+
+@keyframes tassel-swing {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+
+@keyframes page-rustle {
+  0%, 40%, 100% { opacity: 1; }
+  20% { opacity: 0.4; }
+  60% { opacity: 0.65; }
+}
+
+@keyframes error-dim {
+  from { opacity: 1; }
+  to { opacity: 0.15; }
+}

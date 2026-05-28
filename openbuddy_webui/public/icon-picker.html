@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenBuddy Icon Picker 🎨</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff6b9d;
+    --purple: #c084fc;
+    --blue: #60a5fa;
+    --mint: #34d399;
+    --yellow: #fbbf24;
+    --peach: #fb923c;
+    --bg: #fef7ff;
+    --card: #ffffff;
+    --text: #4a3560;
+    --text-light: #8b7ba0;
+    --border: #f0e4f7;
+    --selected: #d9f99d;
+    --selected-border: #84cc16;
+    --shadow: 0 4px 20px rgba(160, 100, 200, 0.1);
+    --shadow-hover: 0 8px 30px rgba(160, 100, 200, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,107,157,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(96,165,250,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(192,132,252,0.05) 0%, transparent 50%);
+  }
+
+  .header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    position: relative;
+  }
+
+  .header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .header p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    background: var(--border);
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 0%;
+  }
+
+  .progress-text {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--purple);
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 4rem;
+  }
+
+  .icon-row {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .icon-row.has-selection {
+    border-color: var(--selected-border);
+  }
+
+  .icon-row-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .icon-row-header:hover {
+    background: rgba(192, 132, 252, 0.04);
+  }
+
+  .expand-arrow {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .icon-row.expanded .expand-arrow {
+    transform: rotate(90deg);
+  }
+
+  .lucide-name {
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 140px;
+    color: var(--text);
+  }
+
+  .selected-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--selected-border);
+    font-weight: 600;
+  }
+
+  .selected-preview img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .selected-preview .sel-name {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .icon-row-body {
+    display: none;
+    padding: 0 20px 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .icon-row.expanded .icon-row-body {
+    display: block;
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--bg);
+  }
+
+  .search-bar input:focus {
+    border-color: var(--purple);
+  }
+
+  .search-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .search-bar button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(255,107,157,0.3);
+  }
+
+  .search-bar button:active {
+    transform: scale(0.97);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 6px 8px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--bg);
+    position: relative;
+  }
+
+  .icon-card:hover {
+    border-color: var(--purple);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .icon-card.selected {
+    border-color: var(--selected-border);
+    background: var(--selected);
+  }
+
+  .icon-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--selected-border);
+  }
+
+  .icon-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+  }
+
+  .icon-card .icon-id {
+    font-size: 0.6rem;
+    color: var(--text-light);
+    text-align: center;
+    word-break: break-all;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid var(--border);
+    border-top-color: var(--purple);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  .source-section {
+    margin-bottom: 16px;
+  }
+
+  .source-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .source-label.fluent-emoji-flat {
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    color: #6366f1;
+  }
+
+  .source-label.flat-color-icons {
+    background: linear-gradient(135deg, #fef3c7, #fce7f3);
+    color: #db2777;
+  }
+
+  .source-label.glyphs-poly {
+    background: linear-gradient(135deg, #d1fae5, #cffafe);
+    color: #0d9488;
+  }
+
+  .source-label.streamline-stickies-color {
+    background: linear-gradient(135deg, #fce7f3, #fef3c7);
+    color: #d946ef;
+  }
+
+  .source-label.openmoji {
+    background: linear-gradient(135deg, #fff7ed, #fef9c3);
+    color: #ea580c;
+  }
+
+  .source-label.noto-v1 {
+    background: linear-gradient(135deg, #ecfdf5, #dbeafe);
+    color: #2563eb;
+  }
+
+  .source-empty {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    padding: 4px 0 8px;
+  }
+
+  .summary {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 2rem;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border);
+  }
+
+  .summary h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--mint), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .summary-list {
+    list-style: none;
+    font-size: 0.9rem;
+    line-height: 2;
+  }
+
+  .summary-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .summary-list li:last-child {
+    border-bottom: none;
+  }
+
+  .summary-list .from {
+    font-weight: 700;
+    min-width: 130px;
+    color: var(--text-light);
+  }
+
+  .summary-list .arrow {
+    color: var(--pink);
+    font-weight: 800;
+  }
+
+  .summary-list .to {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .summary-list .pending {
+    color: var(--peach);
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .summary-list img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .copy-btn {
+    margin-top: 1rem;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--mint), var(--blue));
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+
+  .copy-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(52,211,153,0.3);
+  }
+
+  .copy-btn:active { transform: scale(0.97); }
+
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>OpenBuddy Icon Picker 🎨</h1>
+  <p>为每个 Lucide 图标挑选可爱的彩色替代（Fluent Emoji Flat · Glyphs Poly · Flat Color Icons）</p>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-text" id="progressText">0 / 17 已选择</div>
+</div>
+
+<div class="container" id="container"></div>
+
+<div class="toast" id="toast">已复制到剪贴板 ✨</div>
+
+<script>
+const ICONS = [
+  { name: 'Check',         keywords: 'check mark' },
+  { name: 'ChevronDown',   keywords: 'down arrow' },
+  { name: 'ChevronRight',  keywords: 'right arrow' },
+  { name: 'Home',          keywords: 'house' },
+  { name: 'KeyRound',      keywords: 'key lock' },
+  { name: 'Loader2',       keywords: 'hourglass timer' },
+  { name: 'MessageSquare', keywords: 'speech bubble chat' },
+  { name: 'Monitor',       keywords: 'computer desktop' },
+  { name: 'Pencil',        keywords: 'pencil writing' },
+  { name: 'Plus',          keywords: 'plus add' },
+  { name: 'Settings',      keywords: 'gear wrench' },
+  { name: 'Smartphone',    keywords: 'mobile phone' },
+  { name: 'SmilePlus',     keywords: 'smiling face star' },
+  { name: 'Trash2',        keywords: 'wastebasket delete' },
+  { name: 'Wifi',          keywords: 'antenna signal' },
+  { name: 'WifiOff',       keywords: 'no signal prohibited' },
+  { name: 'X',             keywords: 'cross mark cancel' },
+];
+
+const selections = {};
+
+function updateProgress() {
+  const count = Object.keys(selections).length;
+  const pct = (count / ICONS.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${count} / ${ICONS.length} 已选择`;
+  renderSummary();
+}
+
+function iconSvgUrl(iconId) {
+  const [prefix, name] = iconId.split(':');
+  return `https://api.iconify.design/${prefix}/${name}.svg`;
+}
+
+const PREFIXES = [
+  { prefix: 'fluent-emoji-flat',        label: 'Fluent Emoji Flat' },
+  { prefix: 'flat-color-icons',         label: 'Flat Color Icons' },
+  { prefix: 'glyphs-poly',             label: 'Glyphs Poly' },
+  { prefix: 'streamline-stickies-color', label: 'Streamline Stickies Color' },
+  { prefix: 'openmoji',                label: 'OpenMoji' },
+  { prefix: 'noto-v1',                 label: 'Noto v1' },
+];
+
+async function doSearch(iconName, query) {
+  const grid = document.getElementById(`grid-${iconName}`);
+  grid.innerHTML = '<div class="loading">搜索中</div>';
+
+  try {
+    const results = await Promise.all(
+      PREFIXES.map(async ({ prefix, label }) => {
+        const resp = await fetch(`https://api.iconify.design/search?query=${encodeURIComponent(query)}&prefix=${prefix}&limit=36`);
+        const data = await resp.json();
+        return { prefix, label, icons: data.icons || [] };
+      })
+    );
+
+    const totalIcons = results.reduce((sum, r) => sum + r.icons.length, 0);
+    if (totalIcons === 0) {
+      grid.innerHTML = '<div class="no-results">没有找到结果，试试其他关键词 🤔</div>';
+      return;
+    }
+
+    grid.innerHTML = '';
+
+    results.forEach(({ prefix, label, icons }) => {
+      const section = document.createElement('div');
+      section.className = 'source-section';
+
+      const labelEl = document.createElement('div');
+      labelEl.className = `source-label ${prefix}`;
+      labelEl.textContent = `${label} (${icons.length})`;
+      section.appendChild(labelEl);
+
+      if (icons.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'source-empty';
+        empty.textContent = '此图标集无结果';
+        section.appendChild(empty);
+      } else {
+        const subGrid = document.createElement('div');
+        subGrid.className = 'results-grid';
+        icons.forEach(iconId => {
+          const card = document.createElement('div');
+          card.className = 'icon-card' + (selections[iconName] === iconId ? ' selected' : '');
+          const shortName = iconId.replace(prefix + ':', '');
+          card.innerHTML = `
+            <img src="${iconSvgUrl(iconId)}" alt="${shortName}" loading="lazy">
+            <span class="icon-id">${shortName}</span>
+          `;
+          card.addEventListener('click', () => {
+            selections[iconName] = iconId;
+            grid.querySelectorAll('.icon-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            const row = document.getElementById(`row-${iconName}`);
+            row.classList.add('has-selection');
+            const preview = document.getElementById(`preview-${iconName}`);
+            preview.innerHTML = `<img src="${iconSvgUrl(iconId)}"><span class="sel-name">${iconId}</span>`;
+            updateProgress();
+          });
+          subGrid.appendChild(card);
+        });
+        section.appendChild(subGrid);
+      }
+      grid.appendChild(section);
+    });
+  } catch (err) {
+    grid.innerHTML = '<div class="no-results">请求失败，请重试 😢</div>';
+  }
+}
+
+function toggleRow(iconName) {
+  const row = document.getElementById(`row-${iconName}`);
+  const wasExpanded = row.classList.contains('expanded');
+  row.classList.toggle('expanded');
+
+  if (!wasExpanded && !row.dataset.searched) {
+    row.dataset.searched = '1';
+    const input = document.getElementById(`input-${iconName}`);
+    doSearch(iconName, input.value);
+  }
+}
+
+function renderRows() {
+  const container = document.getElementById('container');
+  let html = '';
+
+  ICONS.forEach(icon => {
+    html += `
+      <div class="icon-row" id="row-${icon.name}">
+        <div class="icon-row-header" onclick="toggleRow('${icon.name}')">
+          <span class="expand-arrow">▶</span>
+          <span class="lucide-name">${icon.name}</span>
+          <div class="selected-preview" id="preview-${icon.name}"></div>
+        </div>
+        <div class="icon-row-body" id="body-${icon.name}">
+          <div class="search-bar">
+            <input id="input-${icon.name}" value="${icon.keywords}"
+              placeholder="输入关键词搜索..."
+              onkeydown="if(event.key==='Enter'){doSearch('${icon.name}',this.value)}" />
+            <button onclick="doSearch('${icon.name}',document.getElementById('input-${icon.name}').value)">
+              搜索
+            </button>
+          </div>
+          <div id="grid-${icon.name}"></div>
+        </div>
+      </div>
+    `;
+  });
+
+  html += '<div class="summary" id="summary"></div>';
+  container.innerHTML = html;
+  renderSummary();
+}
+
+function renderSummary() {
+  const summary = document.getElementById('summary');
+  let listHtml = '';
+  ICONS.forEach(icon => {
+    const sel = selections[icon.name];
+    if (sel) {
+      listHtml += `<li>
+        <span class="from">${icon.name}</span>
+        <span class="arrow">→</span>
+        <img src="${iconSvgUrl(sel)}">
+        <span class="to">${sel}</span>
+      </li>`;
+    } else {
+      listHtml += `<li>
+        <span class="from">${icon.name}</span>
+        <span class="arrow">→</span>
+        <span class="pending">未选择</span>
+      </li>`;
+    }
+  });
+
+  summary.innerHTML = `
+    <h2>选择总结 📋</h2>
+    <ul class="summary-list">${listHtml}</ul>
+    <button class="copy-btn" onclick="copySummary()">复制映射结果</button>
+  `;
+}
+
+function copySummary() {
+  const lines = ICONS.map(icon => {
+    const sel = selections[icon.name];
+    return sel ? `${icon.name} → ${sel}` : `${icon.name} → (未选择)`;
+  });
+  navigator.clipboard.writeText(lines.join('\n')).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+
+renderRows();
+</script>
+</body>
+</html>

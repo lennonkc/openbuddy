@@ -1,0 +1,12 @@
+{
+  "name": "pet-frame-gen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.js"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.0"
+  }
+}

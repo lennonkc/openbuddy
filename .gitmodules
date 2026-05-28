@@ -1,0 +1,3 @@
+[submodule "openbuddy_fun"]
+	path = openbuddy_fun
+	url = https://github.com/lennonkc/openbuddy_fun.git

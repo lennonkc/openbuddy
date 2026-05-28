@@ -1,0 +1,81 @@
+@import "./styles/pet-animations.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: clamp(1rem, 0.85rem + 0.25vw, 1.25rem);
+  }
+
+  :root {
+    --background: 40 100% 98.6%;
+    --foreground: 30 27% 29%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 27% 29%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 27% 29%;
+    --primary: 43 100% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 100% 95%;
+    --secondary-foreground: 30 27% 29%;
+    --muted: 40 60% 95%;
+    --muted-foreground: 30 18% 50%;
+    --accent: 40 100% 93%;
+    --accent-foreground: 30 27% 29%;
+    --destructive: 340 100% 70%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 33 100% 88%;
+    --input: 33 100% 88%;
+    --ring: 43 100% 62%;
+    --radius: 1rem;
+  }
+}
+
+@layer utilities {
+  .bg-candy-gradient {
+    background: linear-gradient(180deg, #FFF3D6 0%, #FFE8B8 100%);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid #FFE0B2;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(255, 183, 61, 0.06);
+  }
+
+  .glass-card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .glass-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 183, 61, 0.12);
+  }
+
+  .btn-jelly:active {
+    animation: jelly 0.3s ease-out;
+  }
+
+  .candy-title {
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, #FF6B9D 0%, #FFA502 25%, #FFD93D 50%, #7BC67E 75%, #64B5F6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(255,107,157,0.3)) drop-shadow(0 2px 4px rgba(255,165,2,0.15));
+    -webkit-text-stroke: 0.3px rgba(61,46,31,0.1);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+}

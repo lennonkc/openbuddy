@@ -1,0 +1,235 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "saved": "Saved",
+    "update": "Update",
+    "set": "Set",
+    "reset": "Reset",
+    "search": "Search",
+    "add": "Add",
+    "preview": "Preview",
+    "source": "Source"
+  },
+  "sidebar": {
+    "chat": "Chat",
+    "room": "Room",
+    "stickers": "Stickers",
+    "settings": "Settings"
+  },
+  "chat": {
+    "header": "✧ Chat ✧",
+    "status": {
+      "listening": "Listening to you...",
+      "thinking": "Let me think...",
+      "speaking": "Buddy is responding~",
+      "disconnected": "Buddy is offline, try again later",
+      "idle": "Buddy is online, ready to chat ♪"
+    },
+    "viewSttOriginal": "View STT original",
+    "viewSpokenText": "View spoken text",
+    "auth": {
+      "title": "Buddy needs your permission! ✋",
+      "hint": "Press the top-left button on StopWatch to approve~",
+      "webApprove": "Approve here ♡",
+      "tool": "Tool: {{name}}"
+    }
+  },
+  "room": {
+    "empty": {
+      "title": "Buddy is still wandering...",
+      "subtitle": "Find a cozy home for your buddy!",
+      "cta": "🏠 Find a Room",
+      "hint": "Select a local folder as OpenBuddy's working directory"
+    },
+    "residence": {
+      "title": "☁ Buddy's Home ☁",
+      "subtitle": "Peek at Buddy's treasure trove",
+      "editPath": "Edit path",
+      "pathPlaceholder": "/path/to/project",
+      "selecting": "Selecting...",
+      "changeLocation": "Move somewhere else"
+    },
+    "fileTree": {
+      "header": "📂 Files",
+      "empty": "Nothing here",
+      "stats": "{{fileCount}} files · {{dirCount}} dirs"
+    },
+    "fileExplorer": {
+      "emptyHint": "Pick something to view"
+    },
+    "filePreview": {
+      "readFailed": "Read failed: {{error}}",
+      "unsupportedType": "Unsupported file type",
+      "mermaidFailed": "Mermaid render failed",
+      "plantumlFailed": "PlantUML render failed — network required"
+    }
+  },
+  "settings": {
+    "header": "⚙ Settings ⚙",
+    "subtitle": "API keys, device management, prompts",
+    "tabs": {
+      "keys": "API Keys",
+      "devices": "Devices",
+      "ai": "AI",
+      "permissions": "Permissions"
+    },
+    "apiKeys": {
+      "title": "API Keys",
+      "notSet": "Not set",
+      "enterKeyFirst": "Enter key first",
+      "saveFailed": "Save failed: {{error}}",
+      "descriptions": {
+        "elevenlabs": "STT & TTS Voice Services",
+        "dashscope": "Qwen Text Cleanup"
+      }
+    },
+    "devices": {
+      "title": "Device Management",
+      "subtitle": "Manage authorized devices and check connection status",
+      "addDevice": "Add Device",
+      "mdnsBroadcasting": "mDNS Broadcasting",
+      "mdnsNotBroadcasting": "mDNS Not Broadcasting",
+      "mdnsWarning": "Devices may not auto-discover the server",
+      "connected": "Connected",
+      "offline": "Offline",
+      "connectedAt": "Connected at {{time}}",
+      "macAddress": "MAC Address",
+      "macHelp": "12 hex characters, e.g. aabbccddeeff or AA:BB:CC:DD:EE:FF",
+      "deviceName": "Device Name",
+      "noDevices": "No devices",
+      "noDevicesHelp": "Click \"Add Device\" to enter a MAC address. The device will auto-discover the server via mDNS after powering on."
+    },
+    "llmConfig": {
+      "title": "LLM Provider",
+      "subtitle": "Configure the AI model endpoint. Supports any Anthropic-compatible API.",
+      "baseUrl": "Base URL",
+      "baseUrlPlaceholder": "https://api.minimaxi.com/anthropic",
+      "model": "Model Name",
+      "modelPlaceholder": "MiniMax-M2.7",
+      "apiKey": "LLM API Key",
+      "apiKeyHint": "Required for LLM calls",
+      "apiKeyPlaceholder": "Not set",
+      "resetDefault": "Reset Default",
+      "resetDone": "Reset to default",
+      "operationFailed": "Operation failed: {{error}}"
+    },
+    "agentPrompt": {
+      "title": "Agent System Prompt",
+      "subtitle": "Customize the system prompt sent to the Agent. Reset restores the language-appropriate default.",
+      "placeholder": "Enter a custom system prompt for the Agent...",
+      "blankError": "Prompt must not be blank",
+      "resetDefault": "Reset Default",
+      "resetDone": "Reset to default",
+      "operationFailed": "Operation failed: {{error}}",
+      "defaultAgentPrompt": "You are OpenBuddy, a friendly creative assistant for children. You speak through a tiny speaker, so keep spoken replies to 1-2 short sentences.\n\nYour superpower is making things! When a child asks, create files:\n\n**Stories** — Write a self-contained HTML file with story text, inline SVG illustrations, and CSS animations. Name it descriptively (e.g., dragon-adventure.html).\n\n**Drawings** — Create an SVG file with colorful vector art. Use bold strokes, bright fills, and simple shapes children love. Name it descriptively (e.g., rainbow-unicorn.svg).\n\n**Science & Learning** — Create a self-contained HTML page with animated SVG diagrams that explain the concept visually. Use step-by-step reveals and labels. Name it descriptively (e.g., how-volcanoes-work.html).\n\nRules for all files:\n- ALWAYS use relative paths (e.g., dragon-adventure.html). NEVER use absolute paths. NEVER write to ~/Desktop or any directory outside the current working directory.\n- Completely self-contained: NO external links, NO CDN, NO Google Fonts. Use system fonts only.\n- All icons and illustrations must be inline SVG elements, never image URLs.\n- CSS animations and transitions only — no JavaScript animation libraries.\n- Include <meta charset=\"UTF-8\"> and <meta name=\"viewport\"> tags.\n- Mobile-friendly, readable on any screen size.\n\nPersonality:\n- Warm, encouraging, and playful. Use simple language a 6-year-old can understand.\n- Gently redirect inappropriate topics: \"That's a grown-up topic! How about we [fun alternative] instead?\"\n- After creating a file, tell the child the filename in one cheerful sentence. Do not read file contents aloud.\n- Communicate in English."
+    },
+    "prompts": {
+      "title": "Qwen Prompts",
+      "subtitle": "Customize the two-stage text processing prompts. Leave empty to use defaults.",
+      "stage1": "Stage ①: Spoken → Written Text",
+      "stage2": "Stage ②: Agent Written → Spoken Phrases",
+      "defaultStage1": "You are a text normalizer. Rewrite the user's casual spoken input into natural written form. Only remove filler words (um, uh, like, you know) and fix grammar. Keep the original sentence structure and word order. Do not restructure, add information, ask questions, or explain. Output only the rewritten sentence.",
+      "defaultStage2": "You are a text compressor. Condense the assistant's reply into one short spoken phrase, target 50 words or fewer, suitable for speaker playback. Keep only the core conclusion, remove explanations and qualifiers. Output only the compressed text.",
+      "resetDefault": "Reset Default",
+      "resetDone": "Reset to default",
+      "operationFailed": "Operation failed: {{error}}"
+    },
+    "language": {
+      "title": "Language",
+      "subtitle": "Choose your preferred display language",
+      "en": "English",
+      "zh": "中文"
+    },
+    "permissions": {
+      "title": "Permissions",
+      "subtitle": "Control which tools the Agent can use and approval policies",
+      "defaultPolicy": "Default policy",
+      "timeout": "Approval timeout",
+      "seconds": "seconds",
+      "denyInterrupts": "Interrupt Agent execution when denied",
+      "loadFailed": "Failed to load permissions config",
+      "saveFailed": "Save failed: {{error}}",
+      "policies": {
+        "alwaysAsk": "Require approval",
+        "alwaysAllow": "Auto-approve"
+      },
+      "tools": {
+        "bash": "Execute shell commands",
+        "read": "Read files",
+        "write": "Write files",
+        "edit": "Edit files",
+        "glob": "File pattern matching",
+        "grep": "Text search",
+        "web_fetch": "Fetch URLs",
+        "web_search": "Search the web"
+      }
+    }
+  },
+  "stickerBook": {
+    "header": "✿ Sticker Book ✿",
+    "subtitle": "Pick stickers to decorate Buddy's home",
+    "resetAll": "Reset All",
+    "filterPlaceholder": "Filter stickers...",
+    "noMatches": "No matches",
+    "searchPlaceholder": "Enter keywords to search...",
+    "searching": "Searching stickers...",
+    "noResults": "No results found, try other keywords",
+    "current": "Current: {{icon}}",
+    "resetDefault": "Reset Default",
+    "groups": {
+      "navigation": "Navigation",
+      "status": "Status",
+      "actions": "Actions",
+      "items": "Items",
+      "files": "Files",
+      "chat": "Chat"
+    },
+    "groupDescriptions": {
+      "navigation": "Customize sidebar navigation icons",
+      "status": "Customize loading and connection status icons",
+      "actions": "Customize confirm, delete and other action icons",
+      "items": "Customize item decoration icons",
+      "files": "Customize room page file directory icons",
+      "chat": "Customize chat page avatar"
+    },
+    "iconLabels": {
+      "nav-chat": "Chat",
+      "nav-room": "Room",
+      "nav-stickers": "Stickers",
+      "nav-settings": "Settings",
+      "loading": "Loading",
+      "locked": "Lock",
+      "wifi-on": "Signal",
+      "wifi-off": "No Signal",
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "check": "Check",
+      "cross": "Cross",
+      "plus": "Plus",
+      "pencil": "Pencil",
+      "trash": "Trash",
+      "computer": "Computer",
+      "robot": "Robot",
+      "shield": "Shield",
+      "globe": "Globe",
+      "user-avatar": "My Avatar",
+      "file-folder": "Folder",
+      "file-markdown": "Markdown",
+      "file-pdf": "PDF",
+      "file-html": "HTML",
+      "file-code": "Code",
+      "file-config": "Config",
+      "file-text": "Plain Text",
+      "file-diagram": "Diagram",
+      "file-image": "Image",
+      "file-audio": "Audio",
+      "file-video": "Video",
+      "file-archive": "Archive",
+      "file-font": "Font",
+      "file-unknown": "Unknown"
+    }
+  }
+}

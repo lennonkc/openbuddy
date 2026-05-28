@@ -1,0 +1,235 @@
+{
+  "common": {
+    "loading": "加载中…",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "saved": "已保存",
+    "update": "更新",
+    "set": "设置",
+    "reset": "重置",
+    "search": "搜索",
+    "add": "添加",
+    "preview": "预览",
+    "source": "源码"
+  },
+  "sidebar": {
+    "chat": "聊天",
+    "room": "房间",
+    "stickers": "贴纸",
+    "settings": "设置"
+  },
+  "chat": {
+    "header": "✧ Chat ✧",
+    "status": {
+      "listening": "正在听你说话…",
+      "thinking": "让我想想…",
+      "speaking": "Buddy 正在回复~",
+      "disconnected": "Buddy 不在线，稍后再来吧",
+      "idle": "Buddy 在线，随时等你来聊天 ♪"
+    },
+    "viewSttOriginal": "查看 STT 原文",
+    "viewSpokenText": "查看口语化文本",
+    "auth": {
+      "title": "Buddy 需要你的许可喵~ ✋",
+      "hint": "按一下 StopWatch 左上角的按钮就可以放行啦~",
+      "webApprove": "在这里批准 ♡",
+      "tool": "工具：{{name}}"
+    }
+  },
+  "room": {
+    "empty": {
+      "title": "Buddy 还在流浪中...",
+      "subtitle": "给 ta 找一个温暖的小窝吧!",
+      "cta": "🏠 找个房间住下",
+      "hint": "选择一个本地文件夹作为 OpenBuddy 的工作目录"
+    },
+    "residence": {
+      "title": "☁ Buddy 的小窝 ☁",
+      "subtitle": "看看 Buddy 都藏了什么宝贝",
+      "editPath": "编辑路径",
+      "pathPlaceholder": "/path/to/project",
+      "selecting": "选择中...",
+      "changeLocation": "换个地方住"
+    },
+    "fileTree": {
+      "header": "📂 文件",
+      "empty": "空空如也",
+      "stats": "{{fileCount}} 文件 · {{dirCount}} 目录"
+    },
+    "fileExplorer": {
+      "emptyHint": "选择一个东西来看看呗"
+    },
+    "filePreview": {
+      "readFailed": "读取失败: {{error}}",
+      "unsupportedType": "不支持预览的文件类型",
+      "mermaidFailed": "Mermaid 渲染失败",
+      "plantumlFailed": "PlantUML 渲染失败 — 需要网络连接"
+    }
+  },
+  "settings": {
+    "header": "⚙ Settings ⚙",
+    "subtitle": "API 密钥、设备管理、提示词",
+    "tabs": {
+      "keys": "密钥",
+      "devices": "设备",
+      "ai": "AI",
+      "permissions": "权限"
+    },
+    "apiKeys": {
+      "title": "API Keys",
+      "notSet": "未设置",
+      "enterKeyFirst": "请先输入密钥",
+      "saveFailed": "保存失败: {{error}}",
+      "descriptions": {
+        "elevenlabs": "STT 语音转文字 & TTS 语音合成",
+        "dashscope": "Qwen 文本清洗"
+      }
+    },
+    "devices": {
+      "title": "设备管理",
+      "subtitle": "管理已授权设备，查看连接状态",
+      "addDevice": "添加设备",
+      "mdnsBroadcasting": "mDNS 广播中",
+      "mdnsNotBroadcasting": "mDNS 未广播",
+      "mdnsWarning": "设备可能无法自动发现服务器",
+      "connected": "已连接",
+      "offline": "离线",
+      "connectedAt": "连接于 {{time}}",
+      "macAddress": "MAC 地址",
+      "macHelp": "12位十六进制字符，如 aabbccddeeff 或 AA:BB:CC:DD:EE:FF",
+      "deviceName": "设备名称",
+      "noDevices": "暂无设备",
+      "noDevicesHelp": "点击「添加设备」输入 MAC 地址。设备上电后会通过 mDNS 自动发现服务器。"
+    },
+    "llmConfig": {
+      "title": "LLM 接口配置",
+      "subtitle": "配置 AI 模型端点，支持任意 Anthropic 兼容接口。",
+      "baseUrl": "Base URL",
+      "baseUrlPlaceholder": "https://api.minimaxi.com/anthropic",
+      "model": "Model Name",
+      "modelPlaceholder": "MiniMax-M2.7",
+      "apiKey": "LLM API Key",
+      "apiKeyHint": "LLM 调用必需",
+      "apiKeyPlaceholder": "未设置",
+      "resetDefault": "恢复默认",
+      "resetDone": "已恢复默认",
+      "operationFailed": "操作失败: {{error}}"
+    },
+    "agentPrompt": {
+      "title": "Agent 系统提示词",
+      "subtitle": "自定义发送给 Agent 的系统提示词。重置将恢复当前语言的默认值。",
+      "placeholder": "输入 Agent 的自定义系统提示词...",
+      "blankError": "提示词不能为空白",
+      "resetDefault": "恢复默认",
+      "resetDone": "已恢复默认",
+      "operationFailed": "操作失败: {{error}}",
+      "defaultAgentPrompt": "你是 OpenBuddy，一个专为小朋友设计的创意助手。你通过小喇叭说话，所以口头回复请控制在1-2句简短的话。\n\n你的超能力是做东西！当小朋友提出请求时，创建文件：\n\n**讲故事** — 写一个独立的 HTML 文件，包含故事文字、内联 SVG 插图和 CSS 动画。用描述性中文名称命名（如 勇敢的小龙.html）。\n\n**画画** — 创建 SVG 文件，画出色彩鲜艳的矢量图。使用粗线条、明亮色彩和小朋友喜欢的简单形状。用描述性名称命名（如 彩虹独角兽.svg）。\n\n**科学探索** — 创建独立的 HTML 页面，用带动画的 SVG 图表直观解释概念。用分步展示和标注。用描述性名称命名（如 火山是怎么喷发的.html）。\n\n所有文件的规则：\n- 必须使用相对路径（如 勇敢的小龙.html）。禁止使用绝对路径。禁止写入 ~/Desktop 或当前工作目录以外的任何位置。\n- 完全独立：禁止外部链接、禁止 CDN、禁止 Google Fonts。只用系统字体。\n- 所有图标和插图必须是内联 SVG 元素，不使用图片 URL。\n- 只用 CSS 动画和过渡 — 不用 JavaScript 动画库。\n- 包含 <meta charset=\"UTF-8\"> 和 <meta name=\"viewport\"> 标签。\n- 适配手机，任何屏幕都能清楚阅读。\n\n性格：\n- 温暖、鼓励、有趣。用6岁小朋友能听懂的简单语言。\n- 不适合儿童的话题温柔转移：「这个是大人的话题哦！我们来[有趣的替代]怎么样？」\n- 创建文件后用一句开心的话告诉小朋友文件名。不要把文件内容读出来。\n- 用中文交流。"
+    },
+    "prompts": {
+      "title": "Qwen 提示词",
+      "subtitle": "自定义两个阶段的文本处理提示词。留空使用默认值。",
+      "stage1": "阶段①：用户口语 → 书面文本",
+      "stage2": "阶段②：Agent 书面 → 口语短句",
+      "defaultStage1": "你是一个文本风格化助手。把用户口语化的原话改写成自然的书面句法，只去掉重复和无意义的填充词（嗯、啊、那个、就是），保留原句结构和语序。不要重组句子，不要添加新信息，不要询问，不要解释。只输出改写后的句子。",
+      "defaultStage2": "你是一个文本压缩助手。把下面这段助手回复压缩为一句口语化短句，目标50字以内，适合喇叭朗读。只保留核心结论，删掉解释和修饰。不要添加新信息，不要询问。只输出压缩后的文本。",
+      "resetDefault": "恢复默认",
+      "resetDone": "已恢复默认",
+      "operationFailed": "操作失败: {{error}}"
+    },
+    "language": {
+      "title": "语言",
+      "subtitle": "选择界面显示语言",
+      "en": "English",
+      "zh": "中文"
+    },
+    "permissions": {
+      "title": "权限控制",
+      "subtitle": "控制 Agent 可以使用的工具及审批策略",
+      "defaultPolicy": "默认策略",
+      "timeout": "审批超时",
+      "seconds": "秒",
+      "denyInterrupts": "拒绝后中断 Agent 执行",
+      "loadFailed": "权限配置加载失败",
+      "saveFailed": "保存失败: {{error}}",
+      "policies": {
+        "alwaysAsk": "需要审批",
+        "alwaysAllow": "自动放行"
+      },
+      "tools": {
+        "bash": "执行 Shell 命令",
+        "read": "读取文件",
+        "write": "写入文件",
+        "edit": "编辑文件",
+        "glob": "文件名匹配",
+        "grep": "文本搜索",
+        "web_fetch": "抓取 URL",
+        "web_search": "搜索互联网"
+      }
+    }
+  },
+  "stickerBook": {
+    "header": "✿ Sticker Book ✿",
+    "subtitle": "挑选贴纸装饰 Buddy 的小窝",
+    "resetAll": "全部重置",
+    "filterPlaceholder": "筛选贴纸...",
+    "noMatches": "没有匹配项",
+    "searchPlaceholder": "输入英文关键词搜索...",
+    "searching": "搜索贴纸中...",
+    "noResults": "没有找到结果，换个关键词试试",
+    "current": "当前: {{icon}}",
+    "resetDefault": "恢复默认",
+    "groups": {
+      "navigation": "导航",
+      "status": "状态",
+      "actions": "操作",
+      "items": "物品",
+      "files": "文件",
+      "chat": "聊天"
+    },
+    "groupDescriptions": {
+      "navigation": "定制侧边栏的页面导航图标",
+      "status": "定制加载、连接等状态指示图标",
+      "actions": "定制确认、删除等操作按钮图标",
+      "items": "定制界面中的物品装饰图标",
+      "files": "定制房间页面的文件目录图标",
+      "chat": "定制聊天页面中的个人头像"
+    },
+    "iconLabels": {
+      "nav-chat": "聊天",
+      "nav-room": "房间",
+      "nav-stickers": "贴纸",
+      "nav-settings": "设置",
+      "loading": "加载",
+      "locked": "锁",
+      "wifi-on": "信号",
+      "wifi-off": "断网",
+      "expand": "展开",
+      "collapse": "收起",
+      "check": "勾勾",
+      "cross": "叉叉",
+      "plus": "加号",
+      "pencil": "铅笔",
+      "trash": "垃圾桶",
+      "computer": "电脑",
+      "robot": "机器人",
+      "shield": "盾牌",
+      "globe": "地球",
+      "user-avatar": "我的头像",
+      "file-folder": "文件夹",
+      "file-markdown": "Markdown",
+      "file-pdf": "PDF",
+      "file-html": "HTML",
+      "file-code": "代码",
+      "file-config": "配置",
+      "file-text": "纯文本",
+      "file-diagram": "图表",
+      "file-image": "图片",
+      "file-audio": "音频",
+      "file-video": "视频",
+      "file-archive": "压缩包",
+      "file-font": "字体",
+      "file-unknown": "未知文件"
+    }
+  }
+}
